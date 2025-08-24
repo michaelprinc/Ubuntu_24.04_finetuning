@@ -1,0 +1,881 @@
+=== Ubuntu 24.04.3 Enhanced Setup Log ===
+[0;32m[2025-08-23 23:54:20][0m === Pre-flight Checks ===
+[0;32m[2025-08-23 23:54:20][0m Pre-flight checks completed
+[0;32m[2025-08-23 23:54:20][0m Making all scripts executable...
+[0;32m[2025-08-23 23:54:20][0m === Ubuntu 24.04.3 Enhanced Setup Started ===
+[0;32m[2025-08-23 23:54:20][0m Timestamp: Sat Aug 23 11:54:20 PM CEST 2025
+[0;32m[2025-08-23 23:54:20][0m User: michael-princ
+[0;32m[2025-08-23 23:54:20][0m Hostname: michael-princ-Ubuntu-local-PC
+[0;32m[2025-08-23 23:54:20][0m Kernel: 6.14.0-28-generic
+[0;32m[2025-08-23 23:54:20][0m === Phase 4: GPU / Compute Stack ===
+[0;34m[INFO][0m Running 04_gpu_compute_stack.sh...
+=== 4. GPU / Compute Stack Setup ===
+Checking current GPU configuration...
+03:00.0 VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] Navi 21 [Radeon RX 6800/6800 XT / 6900 XT] (rev c3)
+0f:00.0 VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] Cezanne [Radeon Vega Series / Radeon Vega Mobile Series] (rev c8)
+amdgpu              19722240  52
+amdxcp                 12288  1 amdgpu
+gpu_sched              61440  1 amdgpu
+drm_panel_backlight_quirks    12288  1 amdgpu
+drm_buddy              24576  1 amdgpu
+drm_ttm_helper         16384  1 amdgpu
+ttm                   118784  2 amdgpu,drm_ttm_helper
+drm_exec               12288  1 amdgpu
+drm_suballoc_helper    20480  1 amdgpu
+drm_display_helper    278528  1 amdgpu
+cec                    94208  2 drm_display_helper,amdgpu
+i2c_algo_bit           16384  1 amdgpu
+video                  77824  3 asus_wmi,amdgpu,asus_nb_wmi
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Hit:1 http://cz.archive.ubuntu.com/ubuntu noble InRelease
+Hit:2 http://cz.archive.ubuntu.com/ubuntu noble-updates InRelease
+Hit:3 http://cz.archive.ubuntu.com/ubuntu noble-backports InRelease
+Hit:4 https://cli.github.com/packages stable InRelease
+Hit:5 https://repo.radeon.com/rocm/apt/6.0 jammy InRelease
+Hit:6 http://security.ubuntu.com/ubuntu noble-security InRelease
+Hit:7 https://dl.google.com/linux/chrome/deb stable InRelease
+Hit:8 https://download.docker.com/linux/ubuntu noble InRelease
+Hit:9 https://packages.microsoft.com/repos/edge stable InRelease
+Hit:10 https://packages.microsoft.com/repos/code stable InRelease
+Hit:11 https://ppa.launchpadcontent.net/ubuntuhandbook1/howdy/ubuntu noble InRelease
+Hit:12 https://esm.ubuntu.com/apps/ubuntu noble-apps-security InRelease
+Hit:13 https://esm.ubuntu.com/apps/ubuntu noble-apps-updates InRelease
+Hit:14 https://esm.ubuntu.com/infra/ubuntu noble-infra-security InRelease
+Hit:15 https://esm.ubuntu.com/infra/ubuntu noble-infra-updates InRelease
+Reading package lists...
+Building dependency tree...
+Reading state information...
+4 packages can be upgraded. Run 'apt list --upgradable' to see them.
+W: https://repo.radeon.com/rocm/apt/6.0/dists/jammy/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+Installing Mesa Vulkan and OpenCL drivers...
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Reading package lists...
+Building dependency tree...
+Reading state information...
+mesa-vulkan-drivers is already the newest version (25.0.7-0ubuntu0.24.04.1).
+mesa-opencl-icd is already the newest version (25.0.7-0ubuntu0.24.04.1).
+vulkan-tools is already the newest version (1.3.275.0+dfsg1-1).
+vulkan-validationlayers is already the newest version (1.3.275.0-1).
+mesa-utils is already the newest version (9.0.0-2).
+clinfo is already the newest version (3.0.23.01.25-1build1).
+0 upgraded, 0 newly installed, 0 to remove and 4 not upgraded.
+Installing GPU monitoring tools...
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Reading package lists...
+Building dependency tree...
+Reading state information...
+radeontop is already the newest version (1.4-2).
+0 upgraded, 0 newly installed, 0 to remove and 4 not upgraded.
+Installing nvtop...
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Reading package lists...
+Building dependency tree...
+Reading state information...
+nvtop is already the newest version (3.0.2-1).
+0 upgraded, 0 newly installed, 0 to remove and 4 not upgraded.
+Setting up AMD ROCm (alternative approach for Ubuntu 24.04)...
+OK
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Hit:1 http://cz.archive.ubuntu.com/ubuntu noble InRelease
+Hit:2 http://cz.archive.ubuntu.com/ubuntu noble-updates InRelease
+Hit:3 http://cz.archive.ubuntu.com/ubuntu noble-backports InRelease
+Hit:4 https://download.docker.com/linux/ubuntu noble InRelease
+Hit:5 https://cli.github.com/packages stable InRelease
+Hit:6 https://dl.google.com/linux/chrome/deb stable InRelease
+Hit:7 https://packages.microsoft.com/repos/edge stable InRelease
+Hit:8 https://packages.microsoft.com/repos/code stable InRelease
+Hit:9 https://esm.ubuntu.com/apps/ubuntu noble-apps-security InRelease
+Hit:10 https://ppa.launchpadcontent.net/ubuntuhandbook1/howdy/ubuntu noble InRelease
+Hit:11 https://esm.ubuntu.com/apps/ubuntu noble-apps-updates InRelease
+Hit:12 https://esm.ubuntu.com/infra/ubuntu noble-infra-security InRelease
+Hit:13 http://security.ubuntu.com/ubuntu noble-security InRelease
+Hit:14 https://esm.ubuntu.com/infra/ubuntu noble-infra-updates InRelease
+Reading package lists...
+Building dependency tree...
+Reading state information...
+4 packages can be upgraded. Run 'apt list --upgradable' to see them.
+Installing ROCm packages from Ubuntu repositories...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Some ROCm packages not available in Ubuntu repos, trying minimal install...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+ROCm packages have conflicts, using Mesa OpenCL as alternative...
+Mesa OpenCL is sufficient for most GPU compute tasks on RX 6800
+Adding user to GPU groups...
+Installing additional compute libraries...
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  clang-16 icu-devtools libclang-common-16-dev libclang-cpp16t64
+  libclang-rt-16-dev libclang1-16t64 libgc1 libgl-dev libglx-dev libicu-dev
+  libllvm16t64 libncurses-dev libobjc-13-dev libobjc4 libpfm4 libpocl2-common
+  libpocl2t64 libpthread-stubs0-dev libx11-dev libxau-dev libxcb1-dev
+  libxdmcp-dev libxml2-dev libz3-4 libz3-dev llvm-16 llvm-16-dev
+  llvm-16-linker-tools llvm-16-runtime llvm-16-tools opencl-c-headers
+  opencl-clhpp-headers x11proto-dev xorg-sgml-doctools xtrans-dev
+Suggested packages:
+  clang-16-doc wasi-libc icu-doc ncurses-doc libx11-doc libxcb-doc llvm-16-doc
+  opencl-clhpp-headers-doc
+The following NEW packages will be installed:
+  clang-16 icu-devtools libclang-common-16-dev libclang-cpp16t64
+  libclang-rt-16-dev libclang1-16t64 libgc1 libgl-dev libglx-dev libicu-dev
+  libllvm16t64 libncurses-dev libobjc-13-dev libobjc4 libpfm4 libpocl2-common
+  libpocl2t64 libpthread-stubs0-dev libx11-dev libxau-dev libxcb1-dev
+  libxdmcp-dev libxml2-dev libz3-4 libz3-dev llvm-16 llvm-16-dev
+  llvm-16-linker-tools llvm-16-runtime llvm-16-tools ocl-icd-opencl-dev
+  opencl-c-headers opencl-clhpp-headers opencl-headers pocl-opencl-icd
+  x11proto-dev xorg-sgml-doctools xtrans-dev
+0 upgraded, 38 newly installed, 0 to remove and 4 not upgraded.
+Need to get 155 MB of archives.
+After this operation, 894 MB of additional disk space will be used.
+Get:1 http://cz.archive.ubuntu.com/ubuntu noble/universe amd64 libllvm16t64 amd64 1:16.0.6-23ubuntu4 [25.6 MB]
+Get:2 http://cz.archive.ubuntu.com/ubuntu noble/universe amd64 libclang-cpp16t64 amd64 1:16.0.6-23ubuntu4 [12.6 MB]
+Get:3 http://cz.archive.ubuntu.com/ubuntu noble/main amd64 libgc1 amd64 1:8.2.6-1build1 [90.3 kB]
+Get:4 http://cz.archive.ubuntu.com/ubuntu noble-updates/universe amd64 libobjc4 amd64 14.2.0-4ubuntu2~24.04 [47.0 kB]
+Get:5 http://cz.archive.ubuntu.com/ubuntu noble-updates/universe amd64 libobjc-13-dev amd64 13.3.0-6ubuntu2~24.04 [194 kB]
+Get:6 http://cz.archive.ubuntu.com/ubuntu noble/universe amd64 libclang-common-16-dev amd64 1:16.0.6-23ubuntu4 [631 kB]
+Get:7 http://cz.archive.ubuntu.com/ubuntu noble/universe amd64 llvm-16-linker-tools amd64 1:16.0.6-23ubuntu4 [1,301 kB]
+Get:8 http://cz.archive.ubuntu.com/ubuntu noble/universe amd64 libclang1-16t64 amd64 1:16.0.6-23ubuntu4 [7,254 kB]
+Get:9 http://cz.archive.ubuntu.com/ubuntu noble/universe amd64 clang-16 amd64 1:16.0.6-23ubuntu4 [80.8 kB]
+Get:10 http://cz.archive.ubuntu.com/ubuntu noble-updates/main amd64 icu-devtools amd64 74.2-1ubuntu3.1 [212 kB]
+Get:11 http://cz.archive.ubuntu.com/ubuntu noble/universe amd64 libclang-rt-16-dev amd64 1:16.0.6-23ubuntu4 [3,400 kB]
+Get:12 http://cz.archive.ubuntu.com/ubuntu noble/main amd64 xorg-sgml-doctools all 1:1.11-1.1 [10.9 kB]
+Get:13 http://cz.archive.ubuntu.com/ubuntu noble/main amd64 x11proto-dev all 2023.2-1 [602 kB]
+Get:14 http://cz.archive.ubuntu.com/ubuntu noble/main amd64 libxau-dev amd64 1:1.0.9-1build6 [9,570 B]
+Get:15 http://cz.archive.ubuntu.com/ubuntu noble/main amd64 libxdmcp-dev amd64 1:1.1.3-0ubuntu6 [26.5 kB]
+Get:16 http://cz.archive.ubuntu.com/ubuntu noble/main amd64 xtrans-dev all 1.4.0-1 [68.9 kB]
+Get:17 http://cz.archive.ubuntu.com/ubuntu noble/main amd64 libpthread-stubs0-dev amd64 0.4-1build3 [4,746 B]
+Get:18 http://cz.archive.ubuntu.com/ubuntu noble/main amd64 libxcb1-dev amd64 1.15-1ubuntu2 [85.8 kB]
+Get:19 http://cz.archive.ubuntu.com/ubuntu noble/main amd64 libx11-dev amd64 2:1.8.7-1build1 [732 kB]
+Get:20 http://cz.archive.ubuntu.com/ubuntu noble/main amd64 libglx-dev amd64 1.7.0-1build1 [14.2 kB]
+Get:21 http://cz.archive.ubuntu.com/ubuntu noble/main amd64 libgl-dev amd64 1.7.0-1build1 [102 kB]
+Get:22 http://cz.archive.ubuntu.com/ubuntu noble-updates/main amd64 libicu-dev amd64 74.2-1ubuntu3.1 [11.9 MB]
+Get:23 http://cz.archive.ubuntu.com/ubuntu noble/main amd64 libncurses-dev amd64 6.4+20240113-1ubuntu2 [384 kB]
+Get:24 http://cz.archive.ubuntu.com/ubuntu noble/universe amd64 libpocl2-common all 5.0-2.1build3 [82.7 kB]
+Get:25 http://cz.archive.ubuntu.com/ubuntu noble/universe amd64 libpocl2t64 amd64 5.0-2.1build3 [16.2 MB]
+Get:26 http://cz.archive.ubuntu.com/ubuntu noble-updates/main amd64 libxml2-dev amd64 2.9.14+dfsg-1.3ubuntu3.4 [781 kB]
+Get:27 http://cz.archive.ubuntu.com/ubuntu noble/universe amd64 llvm-16-runtime amd64 1:16.0.6-23ubuntu4 [524 kB]
+Get:28 http://cz.archive.ubuntu.com/ubuntu noble/universe amd64 libpfm4 amd64 4.13.0+git32-g0d4ed0e-1 [414 kB]
+Get:29 http://cz.archive.ubuntu.com/ubuntu noble/universe amd64 llvm-16 amd64 1:16.0.6-23ubuntu4 [23.4 MB]
+Get:30 http://cz.archive.ubuntu.com/ubuntu noble/universe amd64 llvm-16-tools amd64 1:16.0.6-23ubuntu4 [509 kB]
+Get:31 http://cz.archive.ubuntu.com/ubuntu noble/universe amd64 libz3-4 amd64 4.8.12-3.1build1 [5,836 kB]
+Get:32 http://cz.archive.ubuntu.com/ubuntu noble/universe amd64 libz3-dev amd64 4.8.12-3.1build1 [72.2 kB]
+Get:33 http://cz.archive.ubuntu.com/ubuntu noble/universe amd64 llvm-16-dev amd64 1:16.0.6-23ubuntu4 [41.7 MB]
+Get:34 http://cz.archive.ubuntu.com/ubuntu noble/universe amd64 opencl-c-headers all 3.0~2023.12.14-1 [58.7 kB]
+Get:35 http://cz.archive.ubuntu.com/ubuntu noble/universe amd64 opencl-clhpp-headers all 3.0~2023.12.14-1ubuntu1 [50.5 kB]
+Get:36 http://cz.archive.ubuntu.com/ubuntu noble/universe amd64 opencl-headers all 3.0~2023.12.14-1 [1,820 B]
+Get:37 http://cz.archive.ubuntu.com/ubuntu noble/universe amd64 ocl-icd-opencl-dev amd64 2.3.2-1build1 [2,448 B]
+Get:38 http://cz.archive.ubuntu.com/ubuntu noble/universe amd64 pocl-opencl-icd amd64 5.0-2.1build3 [7,182 B]
+Fetched 155 MB in 8s (18.3 MB/s)
+Selecting previously unselected package libllvm16t64:amd64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 194134 files and directories currently installed.)
+Preparing to unpack .../00-libllvm16t64_1%3a16.0.6-23ubuntu4_amd64.deb ...
+Unpacking libllvm16t64:amd64 (1:16.0.6-23ubuntu4) ...
+Selecting previously unselected package libclang-cpp16t64.
+Preparing to unpack .../01-libclang-cpp16t64_1%3a16.0.6-23ubuntu4_amd64.deb ...
+Unpacking libclang-cpp16t64 (1:16.0.6-23ubuntu4) ...
+Selecting previously unselected package libgc1:amd64.
+Preparing to unpack .../02-libgc1_1%3a8.2.6-1build1_amd64.deb ...
+Unpacking libgc1:amd64 (1:8.2.6-1build1) ...
+Selecting previously unselected package libobjc4:amd64.
+Preparing to unpack .../03-libobjc4_14.2.0-4ubuntu2~24.04_amd64.deb ...
+Unpacking libobjc4:amd64 (14.2.0-4ubuntu2~24.04) ...
+Selecting previously unselected package libobjc-13-dev:amd64.
+Preparing to unpack .../04-libobjc-13-dev_13.3.0-6ubuntu2~24.04_amd64.deb ...
+Unpacking libobjc-13-dev:amd64 (13.3.0-6ubuntu2~24.04) ...
+Selecting previously unselected package libclang-common-16-dev.
+Preparing to unpack .../05-libclang-common-16-dev_1%3a16.0.6-23ubuntu4_amd64.deb ...
+Unpacking libclang-common-16-dev (1:16.0.6-23ubuntu4) ...
+Selecting previously unselected package llvm-16-linker-tools.
+Preparing to unpack .../06-llvm-16-linker-tools_1%3a16.0.6-23ubuntu4_amd64.deb ...
+Unpacking llvm-16-linker-tools (1:16.0.6-23ubuntu4) ...
+Selecting previously unselected package libclang1-16t64.
+Preparing to unpack .../07-libclang1-16t64_1%3a16.0.6-23ubuntu4_amd64.deb ...
+Unpacking libclang1-16t64 (1:16.0.6-23ubuntu4) ...
+Selecting previously unselected package clang-16.
+Preparing to unpack .../08-clang-16_1%3a16.0.6-23ubuntu4_amd64.deb ...
+Unpacking clang-16 (1:16.0.6-23ubuntu4) ...
+Selecting previously unselected package icu-devtools.
+Preparing to unpack .../09-icu-devtools_74.2-1ubuntu3.1_amd64.deb ...
+Unpacking icu-devtools (74.2-1ubuntu3.1) ...
+Selecting previously unselected package libclang-rt-16-dev:amd64.
+Preparing to unpack .../10-libclang-rt-16-dev_1%3a16.0.6-23ubuntu4_amd64.deb ...
+Unpacking libclang-rt-16-dev:amd64 (1:16.0.6-23ubuntu4) ...
+Selecting previously unselected package xorg-sgml-doctools.
+Preparing to unpack .../11-xorg-sgml-doctools_1%3a1.11-1.1_all.deb ...
+Unpacking xorg-sgml-doctools (1:1.11-1.1) ...
+Selecting previously unselected package x11proto-dev.
+Preparing to unpack .../12-x11proto-dev_2023.2-1_all.deb ...
+Unpacking x11proto-dev (2023.2-1) ...
+Selecting previously unselected package libxau-dev:amd64.
+Preparing to unpack .../13-libxau-dev_1%3a1.0.9-1build6_amd64.deb ...
+Unpacking libxau-dev:amd64 (1:1.0.9-1build6) ...
+Selecting previously unselected package libxdmcp-dev:amd64.
+Preparing to unpack .../14-libxdmcp-dev_1%3a1.1.3-0ubuntu6_amd64.deb ...
+Unpacking libxdmcp-dev:amd64 (1:1.1.3-0ubuntu6) ...
+Selecting previously unselected package xtrans-dev.
+Preparing to unpack .../15-xtrans-dev_1.4.0-1_all.deb ...
+Unpacking xtrans-dev (1.4.0-1) ...
+Selecting previously unselected package libpthread-stubs0-dev:amd64.
+Preparing to unpack .../16-libpthread-stubs0-dev_0.4-1build3_amd64.deb ...
+Unpacking libpthread-stubs0-dev:amd64 (0.4-1build3) ...
+Selecting previously unselected package libxcb1-dev:amd64.
+Preparing to unpack .../17-libxcb1-dev_1.15-1ubuntu2_amd64.deb ...
+Unpacking libxcb1-dev:amd64 (1.15-1ubuntu2) ...
+Selecting previously unselected package libx11-dev:amd64.
+Preparing to unpack .../18-libx11-dev_2%3a1.8.7-1build1_amd64.deb ...
+Unpacking libx11-dev:amd64 (2:1.8.7-1build1) ...
+Selecting previously unselected package libglx-dev:amd64.
+Preparing to unpack .../19-libglx-dev_1.7.0-1build1_amd64.deb ...
+Unpacking libglx-dev:amd64 (1.7.0-1build1) ...
+Selecting previously unselected package libgl-dev:amd64.
+Preparing to unpack .../20-libgl-dev_1.7.0-1build1_amd64.deb ...
+Unpacking libgl-dev:amd64 (1.7.0-1build1) ...
+Selecting previously unselected package libicu-dev:amd64.
+Preparing to unpack .../21-libicu-dev_74.2-1ubuntu3.1_amd64.deb ...
+Unpacking libicu-dev:amd64 (74.2-1ubuntu3.1) ...
+Selecting previously unselected package libncurses-dev:amd64.
+Preparing to unpack .../22-libncurses-dev_6.4+20240113-1ubuntu2_amd64.deb ...
+Unpacking libncurses-dev:amd64 (6.4+20240113-1ubuntu2) ...
+Selecting previously unselected package libpocl2-common.
+Preparing to unpack .../23-libpocl2-common_5.0-2.1build3_all.deb ...
+Unpacking libpocl2-common (5.0-2.1build3) ...
+Selecting previously unselected package libpocl2t64:amd64.
+Preparing to unpack .../24-libpocl2t64_5.0-2.1build3_amd64.deb ...
+Unpacking libpocl2t64:amd64 (5.0-2.1build3) ...
+Selecting previously unselected package libxml2-dev:amd64.
+Preparing to unpack .../25-libxml2-dev_2.9.14+dfsg-1.3ubuntu3.4_amd64.deb ...
+Unpacking libxml2-dev:amd64 (2.9.14+dfsg-1.3ubuntu3.4) ...
+Selecting previously unselected package llvm-16-runtime.
+Preparing to unpack .../26-llvm-16-runtime_1%3a16.0.6-23ubuntu4_amd64.deb ...
+Unpacking llvm-16-runtime (1:16.0.6-23ubuntu4) ...
+Selecting previously unselected package libpfm4:amd64.
+Preparing to unpack .../27-libpfm4_4.13.0+git32-g0d4ed0e-1_amd64.deb ...
+Unpacking libpfm4:amd64 (4.13.0+git32-g0d4ed0e-1) ...
+Selecting previously unselected package llvm-16.
+Preparing to unpack .../28-llvm-16_1%3a16.0.6-23ubuntu4_amd64.deb ...
+Unpacking llvm-16 (1:16.0.6-23ubuntu4) ...
+Selecting previously unselected package llvm-16-tools.
+Preparing to unpack .../29-llvm-16-tools_1%3a16.0.6-23ubuntu4_amd64.deb ...
+Unpacking llvm-16-tools (1:16.0.6-23ubuntu4) ...
+Selecting previously unselected package libz3-4:amd64.
+Preparing to unpack .../30-libz3-4_4.8.12-3.1build1_amd64.deb ...
+Unpacking libz3-4:amd64 (4.8.12-3.1build1) ...
+Selecting previously unselected package libz3-dev:amd64.
+Preparing to unpack .../31-libz3-dev_4.8.12-3.1build1_amd64.deb ...
+Unpacking libz3-dev:amd64 (4.8.12-3.1build1) ...
+Selecting previously unselected package llvm-16-dev.
+Preparing to unpack .../32-llvm-16-dev_1%3a16.0.6-23ubuntu4_amd64.deb ...
+Unpacking llvm-16-dev (1:16.0.6-23ubuntu4) ...
+Selecting previously unselected package opencl-c-headers.
+Preparing to unpack .../33-opencl-c-headers_3.0~2023.12.14-1_all.deb ...
+Unpacking opencl-c-headers (3.0~2023.12.14-1) ...
+Selecting previously unselected package opencl-clhpp-headers.
+Preparing to unpack .../34-opencl-clhpp-headers_3.0~2023.12.14-1ubuntu1_all.deb ...
+Unpacking opencl-clhpp-headers (3.0~2023.12.14-1ubuntu1) ...
+Selecting previously unselected package opencl-headers.
+Preparing to unpack .../35-opencl-headers_3.0~2023.12.14-1_all.deb ...
+Unpacking opencl-headers (3.0~2023.12.14-1) ...
+Selecting previously unselected package ocl-icd-opencl-dev:amd64.
+Preparing to unpack .../36-ocl-icd-opencl-dev_2.3.2-1build1_amd64.deb ...
+Unpacking ocl-icd-opencl-dev:amd64 (2.3.2-1build1) ...
+Selecting previously unselected package pocl-opencl-icd:amd64.
+Preparing to unpack .../37-pocl-opencl-icd_5.0-2.1build3_amd64.deb ...
+Unpacking pocl-opencl-icd:amd64 (5.0-2.1build3) ...
+Setting up libncurses-dev:amd64 (6.4+20240113-1ubuntu2) ...
+Setting up libclang-rt-16-dev:amd64 (1:16.0.6-23ubuntu4) ...
+Setting up libpthread-stubs0-dev:amd64 (0.4-1build3) ...
+Setting up llvm-16-tools (1:16.0.6-23ubuntu4) ...
+Setting up libllvm16t64:amd64 (1:16.0.6-23ubuntu4) ...
+Setting up xtrans-dev (1.4.0-1) ...
+Setting up libz3-4:amd64 (4.8.12-3.1build1) ...
+Setting up libpfm4:amd64 (4.13.0+git32-g0d4ed0e-1) ...
+Setting up libpocl2-common (5.0-2.1build3) ...
+Setting up icu-devtools (74.2-1ubuntu3.1) ...
+Setting up libgc1:amd64 (1:8.2.6-1build1) ...
+Setting up opencl-c-headers (3.0~2023.12.14-1) ...
+Setting up xorg-sgml-doctools (1:1.11-1.1) ...
+Setting up libicu-dev:amd64 (74.2-1ubuntu3.1) ...
+Setting up libz3-dev:amd64 (4.8.12-3.1build1) ...
+Setting up llvm-16-runtime (1:16.0.6-23ubuntu4) ...
+Setting up libobjc4:amd64 (14.2.0-4ubuntu2~24.04) ...
+Setting up libclang-common-16-dev (1:16.0.6-23ubuntu4) ...
+Setting up libclang1-16t64 (1:16.0.6-23ubuntu4) ...
+Setting up libclang-cpp16t64 (1:16.0.6-23ubuntu4) ...
+Setting up llvm-16-linker-tools (1:16.0.6-23ubuntu4) ...
+Setting up libxml2-dev:amd64 (2.9.14+dfsg-1.3ubuntu3.4) ...
+Setting up opencl-clhpp-headers (3.0~2023.12.14-1ubuntu1) ...
+Setting up ocl-icd-opencl-dev:amd64 (2.3.2-1build1) ...
+Setting up llvm-16 (1:16.0.6-23ubuntu4) ...
+Setting up libobjc-13-dev:amd64 (13.3.0-6ubuntu2~24.04) ...
+Setting up llvm-16-dev (1:16.0.6-23ubuntu4) ...
+Setting up clang-16 (1:16.0.6-23ubuntu4) ...
+Setting up opencl-headers (3.0~2023.12.14-1) ...
+Setting up libpocl2t64:amd64 (5.0-2.1build3) ...
+Setting up pocl-opencl-icd:amd64 (5.0-2.1build3) ...
+Processing triggers for sgml-base (1.31) ...
+Setting up x11proto-dev (2023.2-1) ...
+Setting up libxau-dev:amd64 (1:1.0.9-1build6) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.5) ...
+Processing triggers for systemd (255.4-1ubuntu8.10) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+Setting up libxdmcp-dev:amd64 (1:1.1.3-0ubuntu6) ...
+Setting up libxcb1-dev:amd64 (1.15-1ubuntu2) ...
+Setting up libx11-dev:amd64 (2:1.8.7-1build1) ...
+Setting up libglx-dev:amd64 (1.7.0-1build1) ...
+Setting up libgl-dev:amd64 (1.7.0-1build1) ...
+ROCm not available, using Mesa OpenCL for GPU compute
+Checking Vulkan support...
+==========
+VULKANINFO
+==========
+
+Vulkan Instance Version: 1.3.275
+
+
+Instance Extensions: count = 24
+-------------------------------
+VK_EXT_acquire_drm_display             : extension revision 1
+VK_EXT_acquire_xlib_display            : extension revision 1
+VK_EXT_debug_report                    : extension revision 10
+VK_EXT_debug_utils                     : extension revision 2
+VK_EXT_direct_mode_display             : extension revision 1
+VK_EXT_display_surface_counter         : extension revision 1
+VK_EXT_headless_surface                : extension revision 1
+VK_EXT_surface_maintenance1            : extension revision 1
+VK_EXT_swapchain_colorspace            : extension revision 5
+VK_KHR_device_group_creation           : extension revision 1
+VK_KHR_display                         : extension revision 23
+VK_KHR_external_fence_capabilities     : extension revision 1
+VK_KHR_external_memory_capabilities    : extension revision 1
+VK_KHR_external_semaphore_capabilities : extension revision 1
+VK_KHR_get_display_properties2         : extension revision 1
+VK_KHR_get_physical_device_properties2 : extension revision 2
+VK_KHR_get_surface_capabilities2       : extension revision 1
+VK_KHR_portability_enumeration         : extension revision 1
+VK_KHR_surface                         : extension revision 25
+VK_KHR_surface_protected_capabilities  : extension revision 1
+VK_KHR_wayland_surface                 : extension revision 6
+VK_KHR_xcb_surface                     : extension revision 6
+VK_KHR_xlib_surface                    : extension revision 6
+VK_LUNARG_direct_driver_loading        : extension revision 1
+
+Instance Layers: count = 4
+--------------------------
+VK_LAYER_INTEL_nullhw       INTEL NULL HW                1.1.73   version 1
+VK_LAYER_KHRONOS_validation Khronos Validation Layer     1.3.275  version 1
+VK_LAYER_MESA_device_select Linux device selection layer 1.4.303  version 1
+VK_LAYER_MESA_overlay       Mesa Overlay layer           1.4.303  version 1
+
+Devices:
+========
+GPU0:
+	apiVersion         = 1.4.305
+	driverVersion      = 25.0.7
+	vendorID           = 0x1002
+	deviceID           = 0x1638
+	deviceType         = PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU
+	deviceName         = AMD Radeon Graphics (RADV RENOIR)
+	driverID           = DRIVER_ID_MESA_RADV
+	driverName         = radv
+	driverInfo         = Mesa 25.0.7-0ubuntu0.24.04.1
+	conformanceVersion = 1.4.0.0
+	deviceUUID         = 00000000-0f00-0000-0000-000000000000
+	driverUUID         = 414d442d-4d45-5341-2d44-525600000000
+GPU1:
+	apiVersion         = 1.4.305
+	driverVersion      = 25.0.7
+	vendorID           = 0x1002
+	deviceID           = 0x73bf
+	deviceType         = PHYSICAL_DEVICE_TYPE_DISCRETE_GPU
+	deviceName         = AMD Radeon RX 6800 (RADV NAVI21)
+	driverID           = DRIVER_ID_MESA_RADV
+	driverName         = radv
+	driverInfo         = Mesa 25.0.7-0ubuntu0.24.04.1
+	conformanceVersion = 1.4.0.0
+	deviceUUID         = 00000000-0300-0000-0000-000000000000
+	driverUUID         = 414d442d-4d45-5341-2d44-525600000000
+GPU2:
+	apiVersion         = 1.4.305
+	driverVersion      = 0.0.1
+	vendorID           = 0x10005
+	deviceID           = 0x0000
+	deviceType         = PHYSICAL_DEVICE_TYPE_CPU
+	deviceName         = llvmpipe (LLVM 19.1.1, 256 bits)
+	driverID           = DRIVER_ID_MESA_LLVMPIPE
+	driverName         = llvmpipe
+	driverInfo         = Mesa 25.0.7-0ubuntu0.24.04.1 (LLVM 19.1.1)
+	conformanceVersion = 1.3.1.1
+	deviceUUID         = 6d657361-3235-2e30-2e37-2d3075627500
+	driverUUID         = 6c6c766d-7069-7065-5555-494400000000
+Checking OpenCL support...
+Number of platforms                               3
+  Platform Name                                   Clover
+  Platform Vendor                                 Mesa
+  Platform Version                                OpenCL 1.1 Mesa 25.0.7-0ubuntu0.24.04.1
+  Platform Profile                                FULL_PROFILE
+  Platform Extensions                             cl_khr_icd
+  Platform Extensions function suffix             MESA
+
+  Platform Name                                   Portable Computing Language
+  Platform Vendor                                 The pocl project
+  Platform Version                                OpenCL 3.0 PoCL 5.0+debian  Linux, None+Asserts, RELOC, SPIR, LLVM 16.0.6, SLEEF, DISTRO, POCL_DEBUG
+  Platform Profile                                FULL_PROFILE
+  Platform Extensions                             cl_khr_icd cl_pocl_content_size
+  Platform Extensions with Version                cl_khr_icd                                                       0x400000 (1.0.0)
+                                                  cl_pocl_content_size                                             0x400000 (1.0.0)
+  Platform Numeric Version                        0xc00000 (3.0.0)
+  Platform Extensions function suffix             POCL
+  Platform Host timer resolution                  0ns
+
+  Platform Name                                   rusticl
+  Platform Vendor                                 Mesa/X.org
+  Platform Version                                OpenCL 3.0 
+  Platform Profile                                FULL_PROFILE
+  Platform Extensions                             cl_khr_icd
+  Platform Extensions with Version                cl_khr_icd                                                       0x400000 (1.0.0)
+  Platform Numeric Version                        0xc00000 (3.0.0)
+  Platform Extensions function suffix             MESA
+  Platform Host timer resolution                  1ns
+
+  Platform Name                                   Clover
+Number of devices                                 2
+  Device Name                                     AMD Radeon RX 6800 (radeonsi, navi21, LLVM 19.1.1, DRM 3.61, 6.14.0-28-generic)
+  Device Vendor                                   AMD
+  Device Vendor ID                                0x1002
+  Device Version                                  OpenCL 1.1 Mesa 25.0.7-0ubuntu0.24.04.1
+  Device Numeric Version                          0x401000 (1.1.0)
+  Driver Version                                  25.0.7-0ubuntu0.24.04.1
+  Device OpenCL C Version                         OpenCL C 1.1 
+  Device OpenCL C Numeric Version                 0x401000 (1.1.0)
+  Device Type                                     GPU
+  Device Profile                                  FULL_PROFILE
+  Device Available                                Yes
+  Compiler Available                              Yes
+  Max compute units                               60
+  Max clock frequency                             2475MHz
+  Max work item dimensions                        3
+  Max work item sizes                             256x256x256
+  Max work group size                             256
+  Preferred work group size multiple (kernel)     64
+  Preferred / native vector sizes                 
+    char                                                16 / 16      
+    short                                                8 / 8       
+    int                                                  4 / 4       
+    long                                                 2 / 2       
+    half                                                 0 / 0        (n/a)
+    float                                                4 / 4       
+    double                                               2 / 2        (cl_khr_fp64)
+  Half-precision Floating-point support           (n/a)
+  Single-precision Floating-point support         (core)
+    Denormals                                     No
+    Infinity and NANs                             Yes
+    Round to nearest                              Yes
+    Round to zero                                 No
+    Round to infinity                             No
+    IEEE754-2008 fused multiply-add               No
+    Support is emulated in software               No
+    Correctly-rounded divide and sqrt operations  No
+  Double-precision Floating-point support         (cl_khr_fp64)
+    Denormals                                     Yes
+    Infinity and NANs                             Yes
+    Round to nearest                              Yes
+    Round to zero                                 Yes
+    Round to infinity                             Yes
+    IEEE754-2008 fused multiply-add               Yes
+    Support is emulated in software               No
+  Address bits                                    64, Little-Endian
+  Global memory size                              17179869184 (16GiB)
+  Error Correction support                        No
+  Max memory allocation                           4294967296 (4GiB)
+  Unified memory for Host and Device              No
+  Minimum alignment for any data type             128 bytes
+  Alignment of base address                       32768 bits (4096 bytes)
+  Global Memory cache type                        None
+  Image support                                   No
+  Local memory type                               Local
+  Local memory size                               65536 (64KiB)
+  Max number of constant args                     16
+  Max constant buffer size                        67108864 (64MiB)
+  Max size of kernel argument                     1024
+  Queue properties                                
+    Out-of-order execution                        No
+    Profiling                                     Yes
+  Profiling timer resolution                      0ns
+  Execution capabilities                          
+    Run OpenCL kernels                            Yes
+    Run native kernels                            No
+    ILs with version                              (n/a)
+  Built-in kernels with version                   (n/a)
+  Device Extensions                               cl_khr_byte_addressable_store cl_khr_global_int32_base_atomics cl_khr_global_int32_extended_atomics cl_khr_local_int32_base_atomics cl_khr_local_int32_extended_atomics cl_khr_int64_base_atomics cl_khr_int64_extended_atomics cl_khr_fp64 cl_khr_extended_versioning
+  Device Extensions with Version                  cl_khr_byte_addressable_store                                    0x400000 (1.0.0)
+                                                  cl_khr_global_int32_base_atomics                                 0x400000 (1.0.0)
+                                                  cl_khr_global_int32_extended_atomics                             0x400000 (1.0.0)
+                                                  cl_khr_local_int32_base_atomics                                  0x400000 (1.0.0)
+                                                  cl_khr_local_int32_extended_atomics                              0x400000 (1.0.0)
+                                                  cl_khr_int64_base_atomics                                        0x400000 (1.0.0)
+                                                  cl_khr_int64_extended_atomics                                    0x400000 (1.0.0)
+                                                  cl_khr_fp64                                                      0x400000 (1.0.0)
+                                                  cl_khr_extended_versioning                                       0x400000 (1.0.0)
+
+  Device Name                                     AMD Radeon Graphics (radeonsi, renoir, ACO, DRM 3.61, 6.14.0-28-generic)
+  Device Vendor                                   AMD
+  Device Vendor ID                                0x1002
+  Device Version                                  OpenCL 1.1 Mesa 25.0.7-0ubuntu0.24.04.1
+  Device Numeric Version                          0x401000 (1.1.0)
+  Driver Version                                  25.0.7-0ubuntu0.24.04.1
+  Device OpenCL C Version                         OpenCL C 1.1 
+  Device OpenCL C Numeric Version                 0x401000 (1.1.0)
+  Device Type                                     GPU
+  Device Profile                                  FULL_PROFILE
+  Device Available                                Yes
+  Compiler Available                              Yes
+  Max compute units                               8
+  Max clock frequency                             2000MHz
+  Max work item dimensions                        3
+  Max work item sizes                             256x256x256
+  Max work group size                             256
+  Preferred work group size multiple (kernel)     64
+  Preferred / native vector sizes                 
+    char                                                16 / 16      
+    short                                                8 / 8       
+    int                                                  4 / 4       
+    long                                                 2 / 2       
+    half                                                 0 / 0        (n/a)
+    float                                                4 / 4       
+    double                                               2 / 2        (cl_khr_fp64)
+  Half-precision Floating-point support           (n/a)
+  Single-precision Floating-point support         (core)
+    Denormals                                     No
+    Infinity and NANs                             Yes
+    Round to nearest                              Yes
+    Round to zero                                 No
+    Round to infinity                             No
+    IEEE754-2008 fused multiply-add               No
+    Support is emulated in software               No
+    Correctly-rounded divide and sqrt operations  No
+  Double-precision Floating-point support         (cl_khr_fp64)
+    Denormals                                     Yes
+    Infinity and NANs                             Yes
+    Round to nearest                              Yes
+    Round to zero                                 Yes
+    Round to infinity                             Yes
+    IEEE754-2008 fused multiply-add               Yes
+    Support is emulated in software               No
+  Address bits                                    64, Little-Endian
+  Global memory size                              50252746752 (46.8GiB)
+  Error Correction support                        No
+  Max memory allocation                           12563186688 (11.7GiB)
+  Unified memory for Host and Device              No
+  Minimum alignment for any data type             128 bytes
+  Alignment of base address                       32768 bits (4096 bytes)
+  Global Memory cache type                        None
+  Image support                                   No
+  Local memory type                               Local
+  Local memory size                               65536 (64KiB)
+  Max number of constant args                     16
+  Max constant buffer size                        67108864 (64MiB)
+  Max size of kernel argument                     1024
+  Queue properties                                
+    Out-of-order execution                        No
+    Profiling                                     Yes
+  Profiling timer resolution                      0ns
+  Execution capabilities                          
+    Run OpenCL kernels                            Yes
+    Run native kernels                            No
+    ILs with version                              (n/a)
+  Built-in kernels with version                   (n/a)
+  Device Extensions                               cl_khr_byte_addressable_store cl_khr_global_int32_base_atomics cl_khr_global_int32_extended_atomics cl_khr_local_int32_base_atomics cl_khr_local_int32_extended_atomics cl_khr_int64_base_atomics cl_khr_int64_extended_atomics cl_khr_fp64 cl_khr_extended_versioning
+  Device Extensions with Version                  cl_khr_byte_addressable_store                                    0x400000 (1.0.0)
+                                                  cl_khr_global_int32_base_atomics                                 0x400000 (1.0.0)
+                                                  cl_khr_global_int32_extended_atomics                             0x400000 (1.0.0)
+                                                  cl_khr_local_int32_base_atomics                                  0x400000 (1.0.0)
+                                                  cl_khr_local_int32_extended_atomics                              0x400000 (1.0.0)
+                                                  cl_khr_int64_base_atomics                                        0x400000 (1.0.0)
+                                                  cl_khr_int64_extended_atomics                                    0x400000 (1.0.0)
+                                                  cl_khr_fp64                                                      0x400000 (1.0.0)
+                                                  cl_khr_extended_versioning                                       0x400000 (1.0.0)
+
+  Platform Name                                   Portable Computing Language
+Number of devices                                 1
+  Device Name                                     cpu-haswell-AMD Ryzen 7 5700G with Radeon Graphics
+  Device Vendor                                   AuthenticAMD
+  Device Vendor ID                                0x1022
+  Device Version                                  OpenCL 3.0 PoCL HSTR: cpu-x86_64-pc-linux-gnu-haswell
+  Device Numeric Version                          0xc00000 (3.0.0)
+  Driver Version                                  5.0+debian
+  Device OpenCL C Version                         OpenCL C 1.2 PoCL
+  Device OpenCL C all versions                    OpenCL C                                                         0x400000 (1.0.0)
+                                                  OpenCL C                                                         0x401000 (1.1.0)
+                                                  OpenCL C                                                         0x402000 (1.2.0)
+                                                  OpenCL C                                                         0xc00000 (3.0.0)
+  Device OpenCL C features                        __opencl_c_3d_image_writes                                       0xc00000 (3.0.0)
+                                                  __opencl_c_images                                                0xc00000 (3.0.0)
+                                                  __opencl_c_atomic_order_acq_rel                                  0xc00000 (3.0.0)
+                                                  __opencl_c_atomic_order_seq_cst                                  0xc00000 (3.0.0)
+                                                  __opencl_c_atomic_scope_device                                   0xc00000 (3.0.0)
+                                                  __opencl_c_program_scope_global_variables                        0xc00000 (3.0.0)
+                                                  __opencl_c_generic_address_space                                 0xc00000 (3.0.0)
+                                                  __opencl_c_subgroups                                             0xc00000 (3.0.0)
+                                                  __opencl_c_atomic_scope_all_devices                              0xc00000 (3.0.0)
+                                                  __opencl_c_read_write_images                                     0xc00000 (3.0.0)
+                                                  __opencl_c_fp64                                                  0xc00000 (3.0.0)
+                                                  __opencl_c_ext_fp32_global_atomic_add                            0xc00000 (3.0.0)
+                                                  __opencl_c_ext_fp32_local_atomic_add                             0xc00000 (3.0.0)
+                                                  __opencl_c_ext_fp32_global_atomic_min_max                        0xc00000 (3.0.0)
+                                                  __opencl_c_ext_fp32_local_atomic_min_max                         0xc00000 (3.0.0)
+                                                  __opencl_c_ext_fp64_global_atomic_add                            0xc00000 (3.0.0)
+                                                  __opencl_c_ext_fp64_local_atomic_add                             0xc00000 (3.0.0)
+                                                  __opencl_c_ext_fp64_global_atomic_min_max                        0xc00000 (3.0.0)
+                                                  __opencl_c_ext_fp64_local_atomic_min_max                         0xc00000 (3.0.0)
+                                                  __opencl_c_int64                                                 0xc00000 (3.0.0)
+  Latest conformance test passed                  v2022-04-19-01
+  Device Type                                     CPU
+  Device Profile                                  FULL_PROFILE
+  Device Available                                Yes
+  Compiler Available                              Yes
+  Linker Available                                Yes
+  Max compute units                               16
+  Max clock frequency                             4708MHz
+  Device Partition                                (core)
+    Max number of sub-devices                     16
+    Supported partition types                     equally, by counts
+    Supported affinity domains                    (n/a)
+  Max work item dimensions                        3
+  Max work item sizes                             4096x4096x4096
+  Max work group size                             4096
+  Preferred work group size multiple (device)     8
+  Preferred work group size multiple (kernel)     8
+  Max sub-groups per work group                   128
+  Sub-group sizes (Intel)                         1, 2, 4, 8, 16, 32, 64, 128, 256, 512
+  Preferred / native vector sizes                 
+    char                                                16 / 16      
+    short                                               16 / 16      
+    int                                                  8 / 8       
+    long                                                 4 / 4       
+    half                                                 0 / 0        (n/a)
+    float                                                8 / 8       
+    double                                               4 / 4        (cl_khr_fp64)
+  Half-precision Floating-point support           (n/a)
+  Single-precision Floating-point support         (core)
+    Denormals                                     Yes
+    Infinity and NANs                             Yes
+    Round to nearest                              Yes
+    Round to zero                                 Yes
+    Round to infinity                             Yes
+    IEEE754-2008 fused multiply-add               Yes
+    Support is emulated in software               No
+    Correctly-rounded divide and sqrt operations  Yes
+  Double-precision Floating-point support         (cl_khr_fp64)
+    Denormals                                     Yes
+    Infinity and NANs                             Yes
+    Round to nearest                              Yes
+    Round to zero                                 Yes
+    Round to infinity                             Yes
+    IEEE754-2008 fused multiply-add               Yes
+    Support is emulated in software               No
+  Address bits                                    64, Little-Endian
+  Global memory size                              98358013952 (91.6GiB)
+  Error Correction support                        No
+  Max memory allocation                           34359738368 (32GiB)
+  Unified memory for Host and Device              Yes
+  Shared Virtual Memory (SVM) capabilities        (core)
+    Coarse-grained buffer sharing                 Yes
+    Fine-grained buffer sharing                   Yes
+    Fine-grained system sharing                   No
+    Atomics                                       Yes
+  Unified Shared Memory (USM)                     (cl_intel_unified_shared_memory)
+  Host USM capabilities (Intel)                   USM access, USM atomic access
+  Device USM capabilities (Intel)                 USM access, USM atomic access
+  Single-Device USM caps (Intel)                  USM access, USM atomic access
+  Cross-Device USM caps (Intel)                   (n/a)
+  Shared System USM caps (Intel)                  (n/a)
+  Minimum alignment for any data type             128 bytes
+  Alignment of base address                       1024 bits (128 bytes)
+  Preferred alignment for atomics                 
+    SVM                                           64 bytes
+    Global                                        64 bytes
+    Local                                         64 bytes
+  Atomic memory capabilities                      relaxed, acquire/release, sequentially-consistent, work-group scope, device scope, all-devices scope
+  Atomic fence capabilities                       relaxed, acquire/release, sequentially-consistent, work-item scope, work-group scope, device scope
+  Max size for global variable                    64000 (62.5KiB)
+  Preferred total size of global vars             524288 (512KiB)
+  Global Memory cache type                        Read/Write
+  Global Memory cache size                        16777216 (16MiB)
+  Global Memory cache line size                   64 bytes
+  Image support                                   Yes
+    Max number of samplers per kernel             16
+    Max size for 1D images from buffer            2147483648 pixels
+    Max 1D or 2D image array size                 2048 images
+    Base address alignment for 2D image buffers   0 bytes
+    Pitch alignment for 2D image buffers          0 pixels
+    Max 2D image size                             32768x32768 pixels
+    Max 3D image size                             2048x2048x2048 pixels
+    Max number of read image args                 128
+    Max number of write image args                128
+    Max number of read/write image args           128
+  Pipe support                                    No
+  Max number of pipe args                         0
+  Max active pipe reservations                    0
+  Max pipe packet size                            0
+  Local memory type                               Global
+  Local memory size                               524288 (512KiB)
+  Max number of constant args                     8
+  Max constant buffer size                        524288 (512KiB)
+  Generic address space support                   Yes
+  Max size of kernel argument                     1024
+  Queue properties (on host)                      
+    Out-of-order execution                        Yes
+    Profiling                                     Yes
+  Device enqueue capabilities                     (n/a)
+  Queue properties (on device)                    
+    Out-of-order execution                        No
+    Profiling                                     No
+    Preferred size                                0
+    Max size                                      0
+  Max queues on device                            0
+  Max events on device                            0
+  Command buffer capabilities                     kernel printf, simultaneous use, out of order
+    Required queue properties for command buffer  
+    Out-of-order execution                        No
+    Profiling                                     No
+  Prefer user sync for interop                    Yes
+  Profiling timer resolution                      1ns
+  Execution capabilities                          
+    Run OpenCL kernels                            Yes
+    Run native kernels                            Yes
+    Non-uniform work-groups                       No
+    Work-group collective functions               No
+    Sub-group independent forward progress        Yes
+    IL version                                    (n/a)
+    ILs with version                              (n/a)
+    SPIR versions                                 (n/a)
+  printf() buffer size                            16777216 (16MiB)
+  Built-in kernels                                pocl.add.i8;org.khronos.openvx.scale_image.nn.u8;org.khronos.openvx.scale_image.bl.u8;org.khronos.openvx.tensor_convert_depth.wrap.u8.f32
+  Built-in kernels with version                   pocl.add.i8                                                      0x402000 (1.2.0)
+                                                  org.khronos.openvx.scale_image.nn.u8                             0x402000 (1.2.0)
+                                                  org.khronos.openvx.scale_image.bl.u8                             0x402000 (1.2.0)
+                                                  org.khronos.openvx.tensor_convert_depth.wrap.u8.f32              0x402000 (1.2.0)
+  Device Extensions                               cl_khr_byte_addressable_store cl_khr_global_int32_base_atomics cl_khr_global_int32_extended_atomics cl_khr_local_int32_base_atomics cl_khr_local_int32_extended_atomics cl_khr_3d_image_writes cl_khr_command_buffer cl_pocl_pinned_buffers cl_khr_subgroups cl_intel_unified_shared_memory cl_khr_subgroup_ballot cl_khr_subgroup_shuffle cl_intel_subgroups cl_intel_required_subgroup_size cl_ext_float_atomics cl_khr_spir cl_khr_fp64 cl_khr_int64_base_atomics cl_khr_int64_extended_atomics
+  Device Extensions with Version                  cl_khr_byte_addressable_store                                    0x400000 (1.0.0)
+                                                  cl_khr_global_int32_base_atomics                                 0x400000 (1.0.0)
+                                                  cl_khr_global_int32_extended_atomics                             0x400000 (1.0.0)
+                                                  cl_khr_local_int32_base_atomics                                  0x400000 (1.0.0)
+                                                  cl_khr_local_int32_extended_atomics                              0x400000 (1.0.0)
+                                                  cl_khr_3d_image_writes                                           0x400000 (1.0.0)
+                                                  cl_khr_command_buffer                                              0x9004 (0.9.4)
+                                                  cl_pocl_pinned_buffers                                             0x1000 (0.1.0)
+                                                  cl_khr_subgroups                                                 0x400000 (1.0.0)
+                                                  cl_intel_unified_shared_memory                                   0x400000 (1.0.0)
+                                                  cl_khr_subgroup_ballot                                           0x400000 (1.0.0)
+                                                  cl_khr_subgroup_shuffle                                          0x400000 (1.0.0)
+                                                  cl_intel_subgroups                                               0x400000 (1.0.0)
+                                                  cl_intel_required_subgroup_size                                  0x400000 (1.0.0)
+                                                  cl_ext_float_atomics                                             0x400000 (1.0.0)
+                                                  cl_khr_spir                                                      0x801000 (2.1.0)
+                                                  cl_khr_fp64                                                      0x400000 (1.0.0)
+                                                  cl_khr_int64_base_atomics                                        0x400000 (1.0.0)
+                                                  cl_khr_int64_extended_atomics                                    0x400000 (1.0.0)
+
+
+  Platform Name                                   rusticl
+Number of devices                                 0
+
+NULL platform behavior
+  clGetPlatformInfo(NULL, CL_PLATFORM_NAME, ...)  Clover
+  clGetDeviceIDs(NULL, CL_DEVICE_TYPE_ALL, ...)   Success [MESA]
+  clCreateContext(NULL, ...) [default]            Success [MESA]
+  clCreateContext(NULL, ...) [other]              Success [POCL]
+  clCreateContextFromType(NULL, CL_DEVICE_TYPE_DEFAULT)  Success (1)
+    Platform Name                                 Clover
+    Device Name                                   AMD Radeon RX 6800 (radeonsi, navi21, LLVM 19.1.1, DRM 3.61, 6.14.0-28-generic)
+  clCreateContextFromType(NULL, CL_DEVICE_TYPE_CPU)  No devices found in platform
+  clCreateContextFromType(NULL, CL_DEVICE_TYPE_GPU)  Success (2)
+    Platform Name                                 Clover
+    Device Name                                   AMD Radeon RX 6800 (radeonsi, navi21, LLVM 19.1.1, DRM 3.61, 6.14.0-28-generic)
+    Device Name                                   AMD Radeon Graphics (radeonsi, renoir, ACO, DRM 3.61, 6.14.0-28-generic)
+  clCreateContextFromType(NULL, CL_DEVICE_TYPE_ACCELERATOR)  No devices found in platform
+  clCreateContextFromType(NULL, CL_DEVICE_TYPE_CUSTOM)  No devices found in platform
+  clCreateContextFromType(NULL, CL_DEVICE_TYPE_ALL)  Success (2)
+    Platform Name                                 Clover
+    Device Name                                   AMD Radeon RX 6800 (radeonsi, navi21, LLVM 19.1.1, DRM 3.61, 6.14.0-28-generic)
+    Device Name                                   AMD Radeon Graphics (radeonsi, renoir, ACO, DRM 3.61, 6.14.0-28-generic)
+
+ICD loader properties
+  ICD loader Name                                 OpenCL ICD Loader
+  ICD loader Vendor                               OCL Icd free software
+  ICD loader Version                              2.3.2
+  ICD loader Profile                              OpenCL 3.0
+=== GPU Status Check ===
+Current GPU devices:
+03:00.0 VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] Navi 21 [Radeon RX 6800/6800 XT / 6900 XT] (rev c3)
+0f:00.0 VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] Cezanne [Radeon Vega Series / Radeon Vega Mobile Series] (rev c8)
+
+Vulkan devices:
+	deviceID           = 0x1638
+	deviceType         = PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU
+	deviceName         = AMD Radeon Graphics (RADV RENOIR)
+	driverID           = DRIVER_ID_MESA_RADV
+	driverName         = radv
+--
+	deviceID           = 0x73bf
+	deviceType         = PHYSICAL_DEVICE_TYPE_DISCRETE_GPU
+	deviceName         = AMD Radeon RX 6800 (RADV NAVI21)
+	driverID           = DRIVER_ID_MESA_RADV
+	driverName         = radv
+--
+	deviceID           = 0x0000
+	deviceType         = PHYSICAL_DEVICE_TYPE_CPU
+	deviceName         = llvmpipe (LLVM 19.1.1, 256 bits)
+	driverID           = DRIVER_ID_MESA_LLVMPIPE
+	driverName         = llvmpipe
+
+OpenCL platforms:
+Platform #0: Clover
+ +-- Device #0: AMD Radeon RX 6800 (radeonsi, navi21, LLVM 19.1.1, DRM 3.61, 6.14.0-28-generic)
+ `-- Device #1: AMD Radeon Graphics (radeonsi, renoir, ACO, DRM 3.61, 6.14.0-28-generic)
+Platform #1: Portable Computing Language
+ `-- Device #0: cpu-haswell-AMD Ryzen 7 5700G with Radeon Graphics
+Platform #2: rusticl
+=== GPU / Compute Stack Setup Complete ===
+Note: Reboot may be required for all GPU drivers to load properly
+Run the gpu_monitor.sh script to check GPU status after reboot
+[0;32m[2025-08-23 23:54:49][0m ✅ Phase 4 completed successfully
+[0;32m[2025-08-23 23:54:49][0m === Setup Summary ===
+[0;34m[INFO][0m Checking installed components...
+[0;34m[INFO][0m Network: 3 active interfaces
+[0;34m[INFO][0m UFW Status: Status: active
+[0;34m[INFO][0m Fail2ban: active
+[0;34m[INFO][0m Tuned Profile: Current active profile: workstation-performance
+[0;34m[INFO][0m GPU Drivers: 13 AMD GPU modules loaded
+[0;34m[INFO][0m KVM: inactive
+[0;34m[INFO][0m Docker: Docker version 28.3.3, build 980b856
+[0;34m[INFO][0m VS Code: 1.103.2
+[0;34m[INFO][0m Shell: /bin/bash
+[0;34m[INFO][0m Timeshift: Timeshift 24.01.1
+[0;32m[2025-08-23 23:54:49][0m === Next Steps ===
+[1;33m[WARNING][0m IMPORTANT: A reboot is recommended to ensure all changes take effect
+[0;34m[INFO][0m 1. Reboot the system: sudo reboot
+[0;34m[INFO][0m 2. Test network connectivity and GPU drivers
+[0;34m[INFO][0m 3. Configure GitHub CLI: gh auth login
+[0;34m[INFO][0m 4. Create first backup: ./scripts/system_backup.sh full
+[0;34m[INFO][0m 5. Review logs: /media/michael-princ/E85AE8F65AE8C284/Data_science_projects/Ubuntu_24.04_fine_tuning/setup.log
+[0;32m[2025-08-23 23:54:49][0m Setup completed at Sat Aug 23 11:54:49 PM CEST 2025
+[0;32m[2025-08-23 23:54:49][0m All done! Check the log file: /media/michael-princ/E85AE8F65AE8C284/Data_science_projects/Ubuntu_24.04_fine_tuning/setup.log
