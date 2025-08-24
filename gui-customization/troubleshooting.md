@@ -25,6 +25,54 @@ gio set ~/Desktop/firefox.desktop metadata::trusted true
 
 **Alternative**: Use the dock/taskbar - right-click on running apps and select "Add to Favorites"
 
+### "Extension installation fails with 404 errors"
+
+**Problem**: GNOME extension download URLs return 404 Not Found errors.
+
+**Solutions**:
+```bash
+# Use our improved extension installer
+./gui-customization/install_gnome_extensions.sh
+
+# Or install Extension Manager and use GUI
+sudo apt install gnome-shell-extension-manager
+# Then open "Extensions" app and browse/install extensions
+
+# Alternative: Install via Flatpak
+flatpak install flathub com.mattjakeman.ExtensionManager
+
+# Manual installation via browser:
+# 1. Open Firefox/Chrome
+# 2. Go to https://extensions.gnome.org
+# 3. Install browser extension when prompted
+# 4. Search and install: Dash to Panel, ArcMenu, Desktop Icons NG
+```
+
+**Root Cause**: GNOME extensions website changed their download URLs and version compatibility system. Our script now uses multiple installation methods as fallbacks.
+
+### "Extensions don't work after installation"
+
+**Problem**: Extensions are installed but don't appear or function.
+
+**Solutions**:
+```bash
+# Check if extensions are installed
+gnome-extensions list
+
+# Enable extensions manually
+gnome-extensions enable dash-to-panel@jderose9.github.com
+gnome-extensions enable arcmenu@arcmenu.com
+gnome-extensions enable ding@rastersoft.com
+
+# Check GNOME version compatibility
+gnome-shell --version
+
+# Restart GNOME Shell (X11 only - doesn't work on Wayland)
+Alt + F2, type 'r', press Enter
+
+# For Wayland, log out and back in
+```
+
 ### "Where is the Start Menu?"
 
 **Problem**: Ubuntu uses Activities overview instead of a traditional Start menu.

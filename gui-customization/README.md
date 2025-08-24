@@ -11,11 +11,41 @@ chmod +x gui-customization/setup_windows_like_gui.sh
 # Run the complete GUI transformation
 ./gui-customization/setup_windows_like_gui.sh
 
+# Or install just GNOME extensions (improved method)
+./gui-customization/install_gnome_extensions.sh
+
 # Or run specific customizations
 ./gui-customization/setup_windows_like_gui.sh taskbar     # Windows-like taskbar
 ./gui-customization/setup_windows_like_gui.sh desktop     # Desktop icons
 ./gui-customization/setup_windows_like_gui.sh theme       # Windows 11 theme
 ```
+
+## 🔧 Extension Installation (Updated for Ubuntu 24.04)
+
+Due to changes in GNOME extensions website, we provide multiple installation methods:
+
+### Method 1: Automated Installation (Recommended)
+```bash
+# Use our improved installer with multiple fallbacks
+./gui-customization/install_gnome_extensions.sh
+```
+
+### Method 2: Extension Manager (GUI)
+```bash
+# Install Extension Manager
+sudo apt install gnome-shell-extension-manager
+# Or via Flatpak: flatpak install flathub com.mattjakeman.ExtensionManager
+
+# Then open "Extensions" app and browse for:
+# - Dash to Panel (Windows-like taskbar)
+# - ArcMenu (Start menu)
+# - Desktop Icons NG (Desktop shortcuts)
+```
+
+### Method 3: Web Browser
+1. Open Firefox and go to https://extensions.gnome.org
+2. Install the browser extension when prompted
+3. Search and install the extensions directly from the website
 
 ## 📋 What This Guide Covers
 

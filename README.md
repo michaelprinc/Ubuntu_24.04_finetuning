@@ -11,6 +11,10 @@ chmod +x setup.sh
 # Run complete setup (recommended)
 ./setup.sh
 
+# For Windows users: Make Ubuntu feel like Windows 11
+chmod +x gui-customization/setup_windows_like_gui.sh
+./gui-customization/setup_windows_like_gui.sh
+
 # Or run individual phases
 ./setup.sh 1  # Networking only
 ./setup.sh 4  # GPU setup only
@@ -59,7 +63,15 @@ chmod +x setup.sh
 - **Zsh + Oh My Zsh** with productivity plugins
 - **Modern CLI tools** (exa, bat, fd, ripgrep, btop)
 
-### 📦 8. Backup & Resilience
+### 🎨 8. GUI Customization (Windows 11-like Experience)
+- **Desktop icons** support (missing "Pin to Desktop" feature)
+- **Windows-style taskbar** and start menu (Dash to Panel + ArcMenu)
+- **Windows 11 themes** and icon packs (WhiteSur, Fluent)
+- **Familiar keyboard shortcuts** (Super+R, Super+E, etc.)
+- **File manager improvements** (Nemo with Windows-like features)
+- **Productivity tips** for Windows users transitioning to Ubuntu
+
+### 📦 9. Backup & Resilience
 - **Timeshift snapshots** with automated scheduling
 - **System backup scripts** for /etc, /home, Docker volumes
 - **Recovery procedures** documentation
@@ -95,7 +107,10 @@ cd scripts/
 # Phase 7: Development Tools
 ./07_developer_qol.sh
 
-# Phase 8: Backup
+# Phase 8: GUI Customization
+./gui-customization/setup_windows_like_gui.sh
+
+# Phase 9: Backup
 ./08_backup_resilience.sh
 ```
 

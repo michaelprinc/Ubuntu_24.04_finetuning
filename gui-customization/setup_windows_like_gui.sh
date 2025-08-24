@@ -75,30 +75,37 @@ install_dependencies() {
 install_extensions() {
     log "Installing GNOME extensions..."
     
-    # Create extensions directory
-    mkdir -p ~/.local/share/gnome-shell/extensions
+    # Use our improved extension installer
+    local installer_script="$(dirname "$0")/install_gnome_extensions.sh"
+    if [[ -f "$installer_script" ]]; then
+        log "Running improved extension installer..."
+        bash "$installer_script"
+    else
+        # Fallback to package manager installation
+        log "Fallback: Installing extensions via package manager..."
+        
+        sudo apt install -y gnome-shell-extension-manager
+        
+        # Try to install available packages
+        local extensions=(
+            "gnome-shell-extension-dash-to-panel"
+            "gnome-shell-extension-desktop-icons-ng"
+        )
+        
+        for ext in "${extensions[@]}"; do
+            if apt-cache show "$ext" &> /dev/null; then
+                sudo apt install -y "$ext"
+                success "Installed $ext"
+            else
+                warning "$ext not available - manual installation required"
+            fi
+        done
+        
+        warning "Some extensions may need manual installation via Extension Manager"
+        warning "Open 'Extensions' app after setup to install missing extensions"
+    fi
     
-    # Download and install Dash to Panel (Windows-like taskbar)
-    log "Installing Dash to Panel extension..."
-    wget -O /tmp/dash-to-panel.zip "https://extensions.gnome.org/download-extension/1160/dash-to-panel.zip?version_tag=45"
-    unzip -o /tmp/dash-to-panel.zip -d ~/.local/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/
-    
-    # Download and install ArcMenu (Start menu replacement)
-    log "Installing ArcMenu extension..."
-    wget -O /tmp/arcmenu.zip "https://extensions.gnome.org/download-extension/3628/arcmenu.zip?version_tag=45"
-    unzip -o /tmp/arcmenu.zip -d ~/.local/share/gnome-shell/extensions/arcmenu@arcmenu.com/
-    
-    # Download and install Desktop Icons NG
-    log "Installing Desktop Icons NG extension..."
-    wget -O /tmp/desktop-icons-ng.zip "https://extensions.gnome.org/download-extension/2087/desktop-icons-ng.zip?version_tag=45"
-    unzip -o /tmp/desktop-icons-ng.zip -d ~/.local/share/gnome-shell/extensions/ding@rastersoft.com/
-    
-    # Enable extensions
-    gnome-extensions enable dash-to-panel@jderose9.github.com
-    gnome-extensions enable arcmenu@arcmenu.com
-    gnome-extensions enable ding@rastersoft.com
-    
-    success "GNOME extensions installed and enabled"
+    success "GNOME extensions installation completed"
 }
 
 # Install Windows 11-like themes
