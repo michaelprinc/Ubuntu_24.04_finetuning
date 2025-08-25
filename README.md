@@ -4,11 +4,33 @@ This repository contains comprehensive setup scripts for Ubuntu 24.04.3 with per
 
 ## 🚀 Quick Start
 
+### New Thematic Organization (Recommended)
+
+```bash
+# List all available scripts
+./list_scripts.sh
+
+# Run complete setup with new thematic organization
+./setup_thematic.sh all
+
+# Run individual modules
+./setup_thematic.sh networking
+./setup_thematic.sh gpu
+./setup_thematic.sh docker
+
+# Run specific utilities
+./gpu/gpu_monitor.sh
+./docker/docker_manage.sh status
+./backup/system_backup.sh full
+```
+
+### Legacy Quick Start
+
 ```bash
 # Make the main script executable
 chmod +x setup.sh
 
-# Run complete setup (recommended)
+# Run complete setup (legacy)
 ./setup.sh
 
 # For Windows users: Make Ubuntu feel like Windows 11
@@ -79,75 +101,124 @@ chmod +x gui-customization/setup_windows_like_gui.sh
 
 ## 🛠️ Usage
 
-### Individual Scripts
+### Thematic Modules
 
-Each phase can be run independently:
-
-```bash
-cd scripts/
-
-# Phase 1: Networking
-./01_networking_drivers.sh
-
-# Phase 2: Security
-./02_security_hardening.sh
-
-# Phase 3: Performance
-./03_performance_tuning.sh
-
-# Phase 4: GPU
-./04_gpu_compute_stack.sh
-
-# Phase 5: Virtualization
-./05_virtualization_passthrough.sh
-
-# Phase 6: Docker
-./06_docker_development.sh
-
-# Phase 7: Development Tools
-./07_developer_qol.sh
-
-# Phase 8: GUI Customization
-./gui-customization/setup_windows_like_gui.sh
-
-# Phase 9: Backup
-./08_backup_resilience.sh
-```
-
-### Utility Scripts
+Scripts are now organized into thematic folders for better organization:
 
 ```bash
-# GPU monitoring
-./scripts/gpu_monitor.sh
+# Networking Configuration
+cd networking/
+./setup_drivers.sh              # Install Realtek RTL8125 drivers
+./rtl8125_speed_fix.sh          # Fix speed issues
 
-# Docker management
-./scripts/docker_manage.sh status
-./scripts/docker_manage.sh cleanup
+# Security Configuration
+cd security/
+./setup_security.sh            # Complete security hardening
 
-# Development environment
-./scripts/dev_env.sh status
-./scripts/dev_env.sh update
+# Authentication Methods
+cd authentication/
+./setup_howdy.sh               # Install facial recognition (Howdy)
+./howdy_manage.sh status       # Manage Howdy settings
+./howdy_manage.sh enable       # Enable facial recognition
+./howdy_manage.sh disable      # Disable facial recognition
+./howdy_rollback.sh            # Complete Howdy removal
 
-# System backup
-./scripts/system_backup.sh full
-./scripts/system_backup.sh quick
+# GPU Configuration
+cd gpu/
+./setup_gpu_stack.sh           # Install AMD ROCm and Vulkan
+./gpu_monitor.sh               # Monitor GPU status
+
+# Virtualization Setup
+cd virtualization/
+./setup_virtualization.sh      # Install KVM/QEMU
+./start-vm.sh                  # Start VM with GPU passthrough
+./stop-vm.sh                   # Stop VMs
+
+# Docker Environment
+cd docker/
+./setup_docker.sh              # Install Docker CE
+./docker_manage.sh status      # Docker status
+./docker_manage.sh cleanup     # Clean up resources
+
+# Performance Tuning
+cd performance/
+./setup_performance.sh         # System performance optimization
+
+# Development Tools
+cd development/
+./setup_development.sh         # Install dev tools
+./shell_recovery.sh            # Shell recovery utilities
+
+# Backup & Recovery
+cd backup/
+./setup_backup.sh              # Configure backup system
+./system_backup.sh full        # Create system backup
+
+# GUI Customization
+cd gui-customization/
+./setup_windows_like_gui.sh    # Windows 11-like experience
 ```
 
 ## 📁 Project Structure
 
 ```
 Ubuntu_24.04_fine_tuning/
-├── setup.sh                 # Master setup script
-├── README.md                 # This file
-├── RECOVERY_INFO.md          # Recovery procedures
-├── setup.log                 # Setup execution log
-├── scripts/
-│   ├── 01_networking_drivers.sh
-│   ├── 02_security_hardening.sh
-│   ├── 03_performance_tuning.sh
-│   ├── 04_gpu_compute_stack.sh
-│   ├── 05_virtualization_passthrough.sh
-│   ├── 06_docker_development.sh
+├── setup.sh                    # Master setup script
+├── README.md                    # This file
+├── RECOVERY_INFO.md             # Recovery procedures
+├── setup.log                    # Setup execution log
+├── networking/                  # Network drivers and configuration
+│   ├── setup_drivers.sh
+│   ├── setup_drivers_optimized.sh
+│   ├── rtl8125_speed_fix.sh
+│   └── README.md
+├── security/                    # Security hardening scripts
+│   ├── setup_security.sh
+│   └── README.md
+├── authentication/              # Biometric authentication
+│   ├── setup_howdy.sh
+│   ├── howdy_manage.sh
+│   ├── howdy_rollback.sh
+│   └── README.md
+├── gpu/                         # GPU drivers and compute stack
+│   ├── setup_gpu_stack.sh
+│   ├── gpu_monitor.sh
+│   ├── reenable_rx6800.sh
+│   └── README.md
+├── virtualization/              # KVM/QEMU and VM management
+│   ├── setup_virtualization.sh
+│   ├── start-vm.sh
+│   ├── stop-vm.sh
+│   └── README.md
+├── docker/                      # Docker setup and management
+│   ├── setup_docker.sh
+│   ├── docker_manage.sh
+│   ├── docker_volume_backup.sh
+│   └── README.md
+├── performance/                 # System performance tuning
+│   ├── setup_performance.sh
+│   └── README.md
+├── development/                 # Developer tools and QoL
+│   ├── setup_development.sh
+│   ├── shell_recovery.sh
+│   └── README.md
+├── backup/                      # Backup and recovery systems
+│   ├── setup_backup.sh
+│   ├── system_backup.sh
+│   └── README.md
+├── gui-customization/           # GUI customization scripts
+│   ├── setup_windows_like_gui.sh
+│   ├── install_gnome_extensions.sh
+│   └── README.md
+├── GRUB/                        # GRUB configuration scripts
+│   ├── complete_setup.sh
+│   ├── backup_grub.sh
+│   └── README.md
+├── docker-projects/             # Docker example projects
+│   └── web-stack/
+└── scripts/                     # Legacy scripts (deprecated)
+    └── (old numbered scripts for reference)
+```
 │   ├── 07_developer_qol.sh
 │   ├── 08_backup_resilience.sh
 │   ├── gpu_monitor.sh
